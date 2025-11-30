@@ -5,6 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Parent Spring Boot -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -18,38 +19,37 @@
     <name>Spring Todos</name>
     <description>Todo Application with Spring Boot</description>
 
+    <!-- Properties -->
     <properties>
         <java.version>25</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <!-- Versions -->
         <maven.surefire.plugin.version>3.5.4</maven.surefire.plugin.version>
         <maven.jacoco.plugin.version>0.8.14</maven.jacoco.plugin.version>
 
-        <maven.dependency.mockito.version>5.20.0</maven.dependency.mockito.version>
-        <maven.dependency.jakarta.servlet-api.version>6.1.0</maven.dependency.jakarta.servlet-api.version>
-        <maven.dependency.jjwt.version>0.13.0</maven.dependency.jjwt.version>
+        <mockito.version>5.20.0</mockito.version>
+        <servlet-api.version>6.1.0</servlet-api.version>
+        <jjwt.version>0.13.0</jjwt.version>
     </properties>
 
+    <!-- Dependencies -->
     <dependencies>
-        <!-- JUnit Vintage -->
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.hamcrest</groupId>
-                    <artifactId>hamcrest-core</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
 
-        <!-- Spring Boot -->
+        <!-- Spring Boot Core -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
         <!-- Thymeleaf Layout Dialect -->
@@ -59,79 +59,16 @@
             <version>3.4.0</version>
         </dependency>
 
-        <!-- Web -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
         <!-- Security -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!-- Thymeleaf -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-
         <!-- Validation -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
-        </dependency>
-
-        <!-- Web MVC Test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-webmvc-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Security Test -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- DevTools -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-
-        <!-- Security Core -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-        </dependency>
-
-        <!-- Mockito -->
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${maven.dependency.mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Servlet API -->
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>${maven.dependency.jakarta.servlet-api.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- JPA -->
@@ -151,33 +88,79 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
-            <version>${maven.dependency.jjwt.version}</version>
+            <version>${jjwt.version}</version>
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-impl</artifactId>
-            <version>${maven.dependency.jjwt.version}</version>
+            <version>${jjwt.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-jackson</artifactId>
-            <version>${maven.dependency.jjwt.version}</version>
+            <version>${jjwt.version}</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- Servlet API -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- DevTools -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Spring Security Test -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Mockito -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Spring Web MVC Test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-webmvc-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
 
+    <!-- Build Plugins -->
     <build>
         <plugins>
 
-            <!-- Spring Boot Plugin -->
+            <!-- Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- Surefire -->
+            <!-- Surefire (Unit Test Runner) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -191,7 +174,7 @@
                 <version>${maven.surefire.plugin.version}</version>
             </plugin>
 
-            <!-- JaCoCo (Coverage) – Check Coverage Disabled) -->
+            <!-- Jacoco (Check disabled, only generate report) -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -205,17 +188,11 @@
                     </execution>
 
                     <execution>
-                        <id>generate-report</id>
+                        <id>report</id>
                         <phase>test</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
-                    </execution>
-
-                    <!-- Coverage check disabled -->
-                    <execution>
-                        <id>check-coverage</id>
-                        <phase>none</phase>
                     </execution>
                 </executions>
             </plugin>
