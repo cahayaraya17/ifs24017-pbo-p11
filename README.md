@@ -9,7 +9,6 @@
 ### 29-10-2025
 
 - Melakukan inisialisasi proyek
-- kita bisaaa
 
 
 ## Syntax
