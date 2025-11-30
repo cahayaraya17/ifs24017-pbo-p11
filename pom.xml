@@ -19,7 +19,7 @@
     <name>Spring Todos</name>
     <description>Todo Application with Spring Boot</description>
 
-    <!-- Properties -->
+    <!-- Versions -->
     <properties>
         <java.version>25</java.version>
 
@@ -160,7 +160,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- Surefire (Unit Test Runner) -->
+            <!-- Unit Test Runner -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -174,12 +174,13 @@
                 <version>${maven.surefire.plugin.version}</version>
             </plugin>
 
-            <!-- Jacoco (Check disabled, only generate report) -->
+            <!-- Jacoco (ONLY report, NO check → NO ERROR) -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${maven.jacoco.plugin.version}</version>
                 <executions>
+                    <!-- Attach Jacoco agent -->
                     <execution>
                         <id>prepare-agent</id>
                         <goals>
@@ -187,6 +188,7 @@
                         </goals>
                     </execution>
 
+                    <!-- Generate coverage report -->
                     <execution>
                         <id>report</id>
                         <phase>test</phase>
@@ -194,6 +196,7 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
+
                 </executions>
             </plugin>
 
